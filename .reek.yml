@@ -1,0 +1,13 @@
+---
+  detectors:
+    IrresponsibleModule:
+      enabled: false
+    UncommunicativeMethodName:
+      accept:
+        - DB
+    TooManyStatements:
+      max_statements: 7
+  exclude_paths:
+    - _snippets
+    - spec/fixtures/project_info.rb # one-time test fixture creator
+
