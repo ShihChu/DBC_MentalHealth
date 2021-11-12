@@ -12,7 +12,7 @@ module MentalHealth
 
       def self.find_full_name(owner_name, record_id)
         db_record = Database::RecordOrm
-          .left_join(:useers, id: :owner_id)
+          .left_join(:users, id: :owner_id)
           .where(account: owner_name, id: record_id)
           .first
         rebuild_entity(db_record)
@@ -44,7 +44,7 @@ module MentalHealth
 
         Entity::Record.new(
           db_record.to_hash.merge(
-            user: Users.rebuild_entity(db_record.user)
+            owner: Users.rebuild_entity(db_record.owner)
           )
         )
       end
@@ -60,10 +60,10 @@ module MentalHealth
         end
 
         def call
-          user = Users.db_find_or_create(@entity.user)
+          owner = Users.db_find_or_create(@entity.owner)
 
           create_record.tap do |db_record|
-            db_record.update(user: user)
+            db_record.update(owner: owner)
           end
         end
       end
