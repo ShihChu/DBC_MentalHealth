@@ -10,16 +10,13 @@ module MentalHealth
         Database::RecordOrm.all.map { |db_record| rebuild_entity(db_record) }
       end
 
-      # def self.find_full_name(owner_name, project_name)
-      #   # SELECT * FROM `projects` LEFT JOIN `members`
-      #   # ON (`members`.`id` = `projects`.`owner_id`)
-      #   # WHERE ((`username` = 'owner_name') AND (`name` = 'project_name'))
-      #   db_record = Database::RecordOrm
-      #     .left_join(:members, id: :owner_id)
-      #     .where(username: owner_name, name: project_name)
-      #     .first
-      #   rebuild_entity(db_record)
-      # end
+      def self.find_full_name(owner_name, record_id)
+        db_record = Database::RecordOrm
+          .left_join(:useers, id: :owner_id)
+          .where(account: owner_name, id: record_id)
+          .first
+        rebuild_entity(db_record)
+      end
 
       # def self.find(entity)
       #   find_origin_id(entity.origin_id)

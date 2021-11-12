@@ -4,11 +4,11 @@ require 'sequel'
 
 Sequel.migration do
   change do
-    create_table(:records) do
+    create_table(:users) do
       primary_key :id
-      foreign_key :user_id, :users
-      
-      Integer :access_time
+
+      String  :account, unique: true
+      Boolean  :is_guided, null: false
 
       DateTime :created_at
       DateTime :updated_at

@@ -12,11 +12,11 @@ module MentalHealth
       include Dry.Types
 
       attribute :id,          Integer.optional
-      attribute :user,        User
+      attribute :owner,        User
       attribute :access_time, Strict::Integer
 
       def to_attr_hash
-        to_hash.reject { |key, _| %i[id user].include? key }
+        to_hash.reject { |key, _| %i[id owner].include? key }
       end
     end
   end

@@ -25,8 +25,9 @@ module MentalHealth
       end
 
       # Database Setup
-      const_set(:DB, Sequel.connect(ENV['DATABASE_URL']))
+      DB = Sequel.connect(ENV['DATABASE_URL'])
       def self.DB() = DB # rubocop:disable Naming/MethodName
     end
+    # rubocop:enable Lint/ConstantDefinitionInBlock
   end
 end

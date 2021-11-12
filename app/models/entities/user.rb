@@ -11,7 +11,7 @@ module MentalHealth
 
       attribute :id,        Integer.optional
       attribute :account,   Strict::String
-      attribute :is_guided, Strict::Boolean
+      attribute :is_guided, Strict::Bool
 
       def to_attr_hash
         to_hash.reject { |key, _| [:id].include? key }

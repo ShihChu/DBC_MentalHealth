@@ -8,8 +8,8 @@ module MentalHealth
     # Finds the right repository for an entity object or class
     module For
       ENTITY_REPOSITORY = {
-        Entity::User => Users,
-        Entity::Record => Records
+        Entity::Record => Records,
+        Entity::User => Users
       }.freeze
 
       def self.klass(entity_klass)

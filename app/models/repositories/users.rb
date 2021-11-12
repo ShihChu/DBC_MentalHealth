@@ -2,7 +2,7 @@
 
 module MentalHealth
   module Repository
-    # Repository for Course
+    # Repository for Users
     class Users
       def self.find_id(id)
         rebuild_entity Database::UserOrm.first(id: id)

@@ -8,7 +8,7 @@ module MentalHealth
     class UserOrm < Sequel::Model(:users)
       one_to_many :owned_records,
                   class: :'MentalHealth::Database::RecordOrm',
-                  key:   :user_id
+                  key:   :owner_id
 
       plugin :timestamps, update_on_create: true
 

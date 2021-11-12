@@ -13,4 +13,3 @@ require 'vcr'
 require 'webmock'
 
 require_relative '../init'
-
