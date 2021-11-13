@@ -18,30 +18,21 @@ module MentalHealth
 
       # GET /
       routing.root do
-        records = Repository::For.klass(Entity::Record).all
-        view 'home', locals: { records: records }
+        view 'home'
       end
 
       routing.on 'record' do
         routing.is do
           # POST /record/
           routing.post do
-            account = routing.params['account']
-            # Redirect viewer to record page
-            routing.redirect "record/#{account}"
           end
         end
 
-        # routing.on String do |user|
-        #   # GET /record/user
-        #   routing.get do
-        #     hobby_introduction = Udemy::CourselistMapper.new(App.config.UDEMY_TOKEN).find('category', hobby)
-        #     # Add project to database
-        #     Repository::For.entity(hobby_introduction).create(hobby_introduction)
-
-        #     view 'introhobby', locals: { hobby: hobby_introduction }
-        #   end
-        # end
+        routing.on do
+          # GET /record/
+          routing.get do
+          end
+        end
       end
     end
   end
