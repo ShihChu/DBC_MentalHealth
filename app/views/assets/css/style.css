@@ -21,7 +21,7 @@
     background-attachment: fixed;
     background-position: 0px 97px;
     background-size: 100% auto;
-    margin-top: 391px;
+    margin-top: 190px;
 }
 
 .font {
@@ -72,4 +72,51 @@ h2 {
     margin-bottom: 0px;
     position: absolute;
     bottom: 0px;
+}
+
+/* count down clock */
+.countdown-container {
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.clock-item .inner {
+    height: 0px;
+    padding-bottom: 100%;
+    position: relative;
+    width: 100%;
+}
+.clock-canvas {
+    background-color: rgba(255, 255, 255, .1);
+    border-radius: 50%;
+    height: 0px;
+    padding-bottom: 100%;
+}
+
+.text {
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: -50px;
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+    width: 100%;
+}
+.text .val {
+    font-size: 50px;
+}
+.text .type-time {
+    font-size: 20px;
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .clock-item {
+        margin-bottom: 30px;
+    }
+}
+@media (max-width: 767px) {
+    .clock-item {
+        padding-top: 190 px;
+    }
 }
