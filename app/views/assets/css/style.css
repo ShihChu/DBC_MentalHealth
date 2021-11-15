@@ -1,0 +1,75 @@
+.container-fluid {
+    padding-right: 0px;
+    margin-right: 0px;
+    padding-left: 0px;
+}
+
+.home_body {
+    background-color: #EAF3F3;
+    background-image: url("../home_background.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 0px 120px;
+    background-size: 100% auto;
+    margin-top: 104px;
+}
+
+.mediation_body {
+    background-color: #AACFD1;
+    background-image: url("../mediation_background.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 0px 97px;
+    background-size: 100% auto;
+    margin-top: 391px;
+}
+
+.font {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: -0.02em;
+    color: #2A868C;
+    text-align: center;
+}
+
+.start_btn {
+    background-color: #2A868C;
+    width: 133px;
+    height: 133px;
+    border: 0px;
+    border-radius: 50%;
+    margin-top: 35px;
+    color: white;
+    font-size: 40px;
+}
+
+.mediation_start_btn {
+    background-color: #2A868C;
+    width: 219px;
+    height: 51px;
+    left: calc(50% - 219px/2);
+    top: calc(50% - 51px/2 + 236.5px);
+    border-radius: 5px;
+    border: 0px;
+    color: white;
+    font-size: 30px;
+    line-height: 35px;
+    letter-spacing: 0.05em;
+}
+
+.bottom_card {
+    background-color: white;
+    width: 105%;
+    padding-top: 54px;
+    padding-left: 22px;
+    padding-right: 44px;
+    margin-bottom: 0px;
+    position: absolute;
+    bottom: 0px;
+}
