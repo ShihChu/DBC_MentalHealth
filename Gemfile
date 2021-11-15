@@ -40,6 +40,10 @@ group :development do
   gem 'rerun', '~> 0'
 end
 
+group :production do
+  gem 'pg'
+end
+
 # Debugging
 gem 'pry'
 
