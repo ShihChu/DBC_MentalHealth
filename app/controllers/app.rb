@@ -18,19 +18,25 @@ module MentalHealth
 
       # GET /
       routing.root do
-        view 'home'
+        view 'home' 
       end
 
-      routing.on 'record' do
+      routing.on 'report' do
         routing.is do
           # POST /record/
           routing.post do
+            account = routing.params['account']
+            routing.redirect "report/#{account}"
           end
         end
 
-        routing.on do
-          # GET /record/
+        routing.on String do |account|
+           # GET /record/#{account}
           routing.get do
+            user = Database::UserOrm.where(account: account).first
+            #binding.pry
+            records = user.owned_records
+            view 'report', locals: { records: records }
           end
         end
       end
