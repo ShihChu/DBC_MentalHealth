@@ -63,6 +63,20 @@ h2 {
     letter-spacing: 0.05em;
 }
 
+.form_btn {
+    background-color: #2A868C;
+    width: 219px;
+    height: 51px;
+    left: calc(50% - 219px/2);
+    top: calc(50% - 51px/2 + 236.5px);
+    border-radius: 5px;
+    border: 0px;
+    color: white;
+    font-size: 30px;
+    line-height: 35px;
+    letter-spacing: 0.05em;
+}
+
 .bottom_card {
     background-color: white;
     width: 105%;
@@ -75,48 +89,93 @@ h2 {
 }
 
 /* count down clock */
-.countdown-container {
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    transform: translateY(-50%);
+@keyframes rotate-mask-rt {
+	0% {    transform: rotate(0deg); }
+	25% {   transform: rotate(180deg); }
+	50% {   transform: rotate(180deg); }
+	75% {   transform: rotate(360deg); }
+	100% {  transform: rotate(360deg); }
 }
-.clock-item .inner {
-    height: 0px;
-    padding-bottom: 100%;
-    position: relative;
-    width: 100%;
-}
-.clock-canvas {
-    background-color: rgba(255, 255, 255, .1);
-    border-radius: 50%;
-    height: 0px;
-    padding-bottom: 100%;
+@keyframes rotate-mask-lt {
+	0% {    transform: rotate(0deg); }
+	25% {   transform: rotate(0deg); }
+	50% {   transform: rotate(180deg); }
+	75% {   transform: rotate(180deg); }
+	100% {  transform: rotate(360deg); }
 }
 
-.text {
-    color: #fff;
-    font-size: 30px;
-    font-weight: bold;
-    margin-top: -50px;
-    position: absolute;
-    top: 50%;
-    text-align: center;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
-    width: 100%;
+.count-down {
+    width: 270px;
+    height: 270px;
+    background: #7f94d0;
+    margin: 0px;
+    border: 2px solid #484848;
+    border-radius: 50%;
+    position: relative;
+   z-index: 1;
 }
-.text .val {
+.count-down:after {
+    position: absolute;
+    content: "";
+    top: 4%;
+    left: 4%;
+    width: 91%;
+    height: 91%;
+    border-radius: 50%;
+    background: #494c50;
+}
+.count-down span {
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+}
+ .count-down .spanA {
+    left: 0;
+}
+ .count-down .spanA em {
+    left: 100%;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    animation-name: rotate-mask-lt;
+    transform-origin: 0 50%;
+}
+.spanB {
+    left: 50%;
+}
+.count-down .spanB em {
+    left: -100%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    animation-name: rotate-mask-rt;
+    transform-origin: 100% 50%;
+}
+.count-down span em {
+    background: #3e4044;
+    animation-duration: 60s;
+    border-radius: 999999999px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+.number {
+    position: fixed;
+    z-index: 999;
+    width: 270px;
+    color: white;
+    text-align: center;
+    margin-top: 20%;
     font-size: 50px;
 }
-.text .type-time {
-    font-size: 20px;
+.text {
+    position: fixed;
+    z-index: 999;
+    width: 270px;
+    text-align: center;
+    margin-top: 30%;
+    color: white;
+    font-size: 30px;
 }
-@media (min-width: 768px) and (max-width: 991px) {
-    .clock-item {
-        margin-bottom: 30px;
-    }
-}
-@media (max-width: 767px) {
-    .clock-item {
-        padding-top: 190 px;
-    }
-}
+/* end of count down clock */

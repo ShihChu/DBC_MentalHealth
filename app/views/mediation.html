@@ -8,41 +8,14 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="./assets/js/countdown.js"></script>
-        <script src="./assets/js/kinetic-v5.1.0.js"></script>
-        <script src="./assets/js/kinetic-v5.1.0.min.js"></script>
-        <script src="https://www.jqueryscript.net/demo/Modern-Circular-jQuery-Countdown-Timer-Plugin-Final-Countdown/js/kinetic.js"></script>
-        <script>
-
-            $('.countdown').final_countdown({
-                now: (''+(new Date().getTime())).substring(0,10),
-                start: '1434626339',
-                end:   '1434627339'
-            });
-        </script>
     </head>
     <body class="mediation_body">
         <div class="container-fluid">
-            <div class="col countdown-container" style="" align="center">
-                <!-- <h2 class="font" style="color: #484848; padding-top: 391px;">
+            <div class="col up-container" align="center">
+                <h2 class="font start_msg" style="color: #484848; padding-top: 201px;">
                     請找一個安靜的地方<br><br>
                     閉上眼睛，穩定呼吸，<br>
-                    想一下今天在 IG 上發生的事</h2> -->
-                <div class="clock row">
-                    <div class="clock-item clock-seconds countdown-time-value col-sm-6 col-md-3">
-                        <div class="wrap">
-                            <div class="inner">
-                                <div id="canvas_seconds" class="clock-canvas"></div>
-                                    <div class="text">
-                                        <p class="val">0</p>
-                                        <p class="type-seconds type-time">SECONDS</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                    
+                    想一下今天在 IG 上發生的事</h2>
             </div>
             
             <div class="col font bottom_card" style="height: 256px; padding: 0px; padding-top: 61px;" align="center">
@@ -55,18 +28,41 @@
                 $(this).hide();
                 $(this).replaceWith("<h2 class='font'>閉上眼睛 ...<br><br>保持穩定呼吸 ...</h2>")
                 // replace text with count down clock
-                const clock = `<div class="clock-item clock-seconds countdown-time-value col-sm-6 col-md-3">
-                                <div class="wrap">
-                                    <div class="inner">
-                                        <div id="canvas_seconds" class="clock-canvas"></div>
-                                            <div class="text">
-                                                <p class="val">0</p>
-                                                <p class="type-seconds type-time">SECONDS</p>
-                                            </div>
-                                        </div>
+                const clock = `<div class="count-down">
+                                    <span class="spanA">
+                                        <em></em>
+                                    </span>
+                                    <span class="spanB">
+                                        <em></em>
+                                    </span>
+                                
+                                    <div class="inside_text">
+                                        <div class="font number">30</div><br>
+                                        <div class="font text">SECONDS</div>
                                     </div>
-                                </div>
-                        </div>`;
+                                </div>`;
+                $(".start_msg").replaceWith(clock);
+            });
+
+            // change sec text
+            setInterval(setTime, 1000);
+            function setTime() {
+                var currentSec = $(".number").html();
+                currentSec--
+                $(".number").html(currentSec);
+                // hide the count down clock after 30 secs
+                if(currentSec == 0) {
+                    // hide count down clock
+                    $(".count-down").hide();
+                    // display finish img
+                    $(".up-container").html("<img src='./assets/finish_mediation.png' width='279px'>");
+                    // replace bottom card as btn
+                    $(".bottom_card").html('<input class="form_btn" type="button" value="前往紀錄">');
+                }
+            }
+
+            $(".form_btn").click(function() {
+                window.location.replace("form.html");
             });
         </script>
     </body>
