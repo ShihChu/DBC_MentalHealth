@@ -1,0 +1,18 @@
+.container
+  form role="form" action="/report" method='POST' id='show-report-form'
+    .row.vertical-align.query-bar
+      .col-md-2.col-sm-3
+        .text-right What's your account ?
+      .col-md-8.col-sm-6
+        input { 
+          type='text' name='account'
+          id='account_input' class="form-control"
+          placeholder="IG account name"
+        }
+      .col-md-2.col-sm-3
+        button { 
+          type='submit' id='account-form-submit' class='submit' 
+          value='submit' class="btn btn-success" 
+        } Show
+    .row
+      .col-md-12.blank-row

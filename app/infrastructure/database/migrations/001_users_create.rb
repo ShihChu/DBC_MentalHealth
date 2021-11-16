@@ -7,7 +7,7 @@ Sequel.migration do
     create_table(:users) do
       primary_key :id
 
-      String  :account, unique: true
+      String   :account, unique: true
       Boolean  :is_guided, null: false
 
       DateTime :created_at

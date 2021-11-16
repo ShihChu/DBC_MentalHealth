@@ -22,12 +22,6 @@ module MentalHealth
         )
       end
 
-      # def self.rebuild_many(db_records)
-      #   db_records.map do |db_member|
-      #     Members.rebuild_entity(db_member)
-      #   end
-      # end
-
       def self.db_find_or_create(entity)
         Database::UserOrm.find_or_create(entity.to_attr_hash)
       end

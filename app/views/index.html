@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="./assets/css/style.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body class="home_body">
+        <div class="container-fluid">
+            <p class="font text-center" style="font-size: 35px; line-height: 41px;">BEing</p>
+            <div class="col" style="margin-top: 80px; height: 48px; width: 105%; background-color: white;">
+                <h2 class="font" style="line-height: 48px;">填寫我的每日小記</h2>
+            </div>
+            <div class="col" style="display: block;" align="center">
+                <input class="start_btn" type="button" value="開始">
+            </div>
+            <div class="col font bottom_card" style="height: 304px;">
+                <p style="font-size: 24px; line-height: 28px; letter-spacing: -0.02em; display: inline; float:left;">我的祝福 & 紀錄 </p>
+                <p style="float:right; display: inline; color: grey; font-size: 13px; line-height: 15px;">所有紀錄 <img src="./assets/further_info_right_arrow.png" width="14px"></p> 
+            </div>
+        </div>
+
+        <script>
+            $(".start_btn").click(function() {
+                // add condition of group a or b
+                window.location.replace("meditation.html");
+            });
+        </script>
+    </body>
+</html>
