@@ -40,9 +40,16 @@
                                         <div class="font number">30</div><br>
                                         <div class="font text">SECONDS</div>
                                     </div>
-                                </div>`;
+                                </div> `;
                 $(".start_msg").replaceWith(clock);
+                playAudio();
             });
+
+            function playAudio() {
+                const audio = document.createElement("audio");
+                audio.src = "./assets/meditation_music.mp3";
+                audio.play();
+            }
 
             // change sec text
             setInterval(setTime, 1000);
@@ -57,13 +64,9 @@
                     // display finish img
                     $(".up-container").html("<img src='./assets/finish_mediation.png' width='279px'>");
                     // replace bottom card as btn
-                    $(".bottom_card").html('<input class="form_btn" type="button" value="前往紀錄">');
+                    $(".bottom_card").html('<a href="form.html"><input class="form_btn" type="button" value="前往紀錄"></a>');
                 }
             }
-
-            $(".form_btn").click(function() {
-                window.location.replace("form.html");
-            });
         </script>
     </body>
 </html>
