@@ -1,16 +1,7 @@
 doctype html
 html
   head
-    meta charset="utf-8"
-    title MentalHealth
-    
-    / Bootstrap CSS and theme (United Theme)
-    /link{
-    /  href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.3/dist/cerulean/bootstrap.min.css"
-    /  rel="stylesheet" integrity="sha384-6PpWmaLt7GOhVYBzVUBXgwhaV2S6iHthYodyuX2lCQlqAmt6RHXOh+wbLF6hunfO"
-    /  crossorigin="anonymous"
-    /}
-
+    meta[charset="utf-8"]
     link[rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"]
     link[rel="stylesheet" href="./assets/css/style.css"]
     script[src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"]
@@ -19,29 +10,18 @@ html
     script[src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"]
     script
       |  $(".start_btn").click(function() { // add condition of group a or b window.location.replace("mediation.html"); }); 
-
-
-    / Custom Assets
-    == assets(:css)
-    == assets(:js, defer: true)
-    
-  body
-    / Bootstrap
-    script{
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
-      crossorigin="anonymous"
-    }
-  
-    .container id='html_body'
-      section
-        .row style="vertical-align: middle;"
-          .col-12
-            h1
-              a.title href="/" MentalHealth
-
-      section
-        == yield
-      
-    .footer
-      == render :footer
+  body.home_body
+    .container-fluid
+      p.font.text-center[style="font-size: 35px; line-height: 41px;"]
+        | OUR BRAND NAME
+      .col[style="margin-top: 80px; height: 48px; width: 105%; background-color: white;"]
+        h2.font[style="line-height: 48px;"]
+          | 填寫我的每日小記
+      .col[style="display: block;" align="center"]
+        input.start_btn[type="button" value="開始"]
+      .col.font.bottom_card[style="height: 304px;"]
+        p[style="font-size: 24px; line-height: 28px; letter-spacing: -0.02em; display: inline; float:left;"]
+          | 我的祝福 & 紀錄 
+        p[style="float:right; display: inline; color: grey; font-size: 13px; line-height: 15px;"]
+          | 所有紀錄 
+          img[src="./assets/further_info_right_arrow.png" width="14px"]
