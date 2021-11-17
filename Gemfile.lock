@@ -1,6 +1,9 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    adamantium (0.2.0)
+      ice_nine (~> 0.11.0)
+      memoizable (~> 0.4.0)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.2)
@@ -33,6 +36,7 @@ GEM
       dry-core (~> 0.5, >= 0.5)
       dry-inflector (~> 0.1, >= 0.1.2)
       dry-logic (~> 1.0, >= 1.0.2)
+    equalizer (0.0.11)
     ffi (1.15.4)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
@@ -48,6 +52,9 @@ GEM
     hirb-unicode (0.0.5)
       hirb (~> 0.5)
       unicode-display_width (~> 0.1.1)
+    html (0.1.2)
+      adamantium (~> 0.2.0)
+      equalizer (~> 0.0.9)
     http (5.0.4)
       addressable (~> 2.8)
       http-cookie (~> 1.0)
@@ -64,6 +71,8 @@ GEM
     llhttp-ffi (0.4.0)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
+    memoizable (0.4.2)
+      thread_safe (~> 0.3, >= 0.3.1)
     method_source (1.0.0)
     minitest (5.14.4)
     minitest-rg (5.2.0)
@@ -72,6 +81,7 @@ GEM
     parser (3.0.2.0)
       ast (~> 2.4.1)
     path_expander (1.1.0)
+    pg (1.2.3)
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -111,6 +121,7 @@ GEM
     sqlite3 (1.4.2)
     temple (0.8.2)
     thor (1.1.0)
+    thread_safe (0.3.6)
     tilt (2.0.10)
     unf (0.1.4)
       unf_ext
@@ -134,9 +145,11 @@ DEPENDENCIES
   flog
   hirb (~> 0)
   hirb-unicode (~> 0)
+  html
   http (~> 5.0)
   minitest (~> 5.0)
   minitest-rg (~> 5.0)
+  pg
   pry
   puma (~> 5.5)
   rake
