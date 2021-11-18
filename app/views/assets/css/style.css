@@ -124,7 +124,7 @@ h2 {
     border: 2px solid #484848;
     border-radius: 50%;
     position: relative;
-   z-index: 1;
+    z-index: 1;
 }
 .count-down:after {
     position: absolute;
@@ -142,10 +142,10 @@ h2 {
     overflow: hidden;
     position: absolute;
 }
- .count-down .spanA {
+.count-down .spanA {
     left: 0;
 }
- .count-down .spanA em {
+.count-down .spanA em {
     left: 100%;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
