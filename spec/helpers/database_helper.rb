@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../../init'
-
 # Helper to clean database during test runs
 module DatabaseHelper
   def self.wipe_database

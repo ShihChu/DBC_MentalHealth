@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 require 'roda'
-require 'slim'
+require 'html'
 require 'yaml'
 
 module MentalHealth
   # Web App
   class App < Roda
-    plugin :render, engine: 'slim', views: 'app/views'
+    plugin :render, engine: 'html.erb', views: 'app/views'
     plugin :assets, css: 'style.css', path: 'app/views/assets'
     plugin :public, root: 'app/views/public'
     plugin :halt
@@ -18,25 +18,13 @@ module MentalHealth
 
       # GET /
       routing.root do
-        view 'home' 
+        view 'home', engine: 'html.erb'
       end
 
-      routing.on 'report' do
+      routing.on 'meditation' do
         routing.is do
-          # POST /record/
-          routing.post do
-            account = routing.params['account']
-            routing.redirect "report/#{account}"
-          end
-        end
-
-        routing.on String do |account|
-           # GET /record/#{account}
           routing.get do
-            user = Database::UserOrm.where(account: account).first
-            #binding.pry
-            records = user.owned_records
-            view 'report', locals: { records: records }
+            view 'meditation', engine: 'html.erb'
           end
         end
       end

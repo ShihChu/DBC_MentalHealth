@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
+ruby File.read('.ruby-version').strip
 
 # Configuration and Utilities
 gem 'figaro', '~> 1.2'
@@ -10,6 +11,7 @@ gem 'rake'
 gem 'puma', '~> 5.5'
 gem 'roda', '~> 3.49'
 gem 'slim', '~> 4.1'
+gem 'html'
 
 # Validation
 gem 'dry-struct', '~> 1.4'
