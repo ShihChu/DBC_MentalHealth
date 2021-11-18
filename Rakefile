@@ -20,6 +20,8 @@ namespace :db do
   task :config do
     require 'sequel'
     require_relative 'config/environment' # load config info
+    require_relative 'spec/helpers/database_helper'
+    
     def app() = MentalHealth::App
   end
 
