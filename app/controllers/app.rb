@@ -28,25 +28,6 @@ module MentalHealth
           end
         end
       end
-
-      # routing.on 'report' do
-      #   routing.is do
-      #     # POST /record/
-      #     routing.post do
-      #       account = routing.params['account']
-      #       routing.redirect "report/#{account}"
-      #     end
-      #   end
-
-      #   routing.on String do |account|
-      #     # GET /record/#{account}
-      #     routing.get do
-      #       user = Database::UserOrm.where(account: account).first
-      #       records = user.owned_records
-      #       view 'report', locals: { records: records }
-      #     end
-      #   end
-      # end
     end
   end
 end
