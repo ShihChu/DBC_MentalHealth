@@ -1,21 +1,26 @@
 <body class="home_body">
     <div class="container-fluid">
-        <p class="font text-center" style="font-size: 35px; line-height: 41px;">OUR BRAND NAME</p>
-        <div class="col" style="margin-top: 80px; height: 48px; width: 105%; background-color: white;">
+        <div class="font text-center" style="font-size: 35px; line-height: 41px;">BEing</div>
+        <div class="col-12" style="margin-top: 80px; height: 48px; width: 105%; background-color: white;">
             <h2 class="font" style="line-height: 48px;">填寫我的每日小記</h2>
         </div>
-        <div class="col" style="display: block;" align="center">
-            <input class="start_btn" type="button" value="開始">
+        <div class="col-12" style="display: block;" align="center">
+            <a href='/meditation'>
+                <input class="start_btn" type="button" value="開始" action="/meditation" method='POST'>
+            </a>
         </div>
-        <div class="col font bottom_card" style="height: 304px;">
+        <div class="col-12 font bottom_card" style="height: 304px;">
             <p style="font-size: 24px; line-height: 28px; letter-spacing: -0.02em; display: inline; float:left;">我的祝福 & 紀錄 </p>
-            <p style="float:right; display: inline; color: grey; font-size: 13px; line-height: 15px;">所有紀錄 <img src="/further_info_right_arrow.png" width="14px"></p> 
+            <p style="float:right; display: inline; color: grey; font-size: 13px; line-height: 15px; margin-top: 5px;">所有紀錄 <img src="/further_info_right_arrow.png" width="14px"></p> 
+            <div class="records no_record" align="center">
+                尚無紀錄
+            </div>
         </div>
     </div>
     <script>
-        $(".start_btn").click(function() {
+        //$(".start_btn").click(function() {
             // add condition of group a or b
-            window.location.replace("mediation.html.erb");
-        });
+            //window.location.replace("/meditation");
+        //});
     </script>
 </body>
