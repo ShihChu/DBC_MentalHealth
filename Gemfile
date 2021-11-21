@@ -55,3 +55,6 @@ group :development do
   gem 'reek'
   gem 'rubocop'
 end
+
+# Security
+gem 'rbnacl'

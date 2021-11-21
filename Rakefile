@@ -16,6 +16,24 @@ task :rerack do
   sh "rerun -c rackup --ignore 'coverage/*'"
 end
 
+desc 'generate KEY'
+task :key do
+  require 'base64'
+  require 'rbnacl'
+  
+  class SecureMessage
+    def self.encoded_random_bytes(length)
+      bytes = RbNaCl::Random.random_bytes(length)
+      Base64.strict_encode64 bytes
+    end
+
+    def self.generate_key
+      encoded_random_bytes(RbNaCl::SecretBox.key_bytes)
+    end
+  end
+  puts "New KEY: #{SecureMessage.generate_key}"
+end
+
 namespace :db do
   task :config do
     require 'sequel'

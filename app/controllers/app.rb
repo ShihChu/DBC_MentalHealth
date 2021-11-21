@@ -18,7 +18,7 @@ module MentalHealth
 
       # GET /
       routing.root do
-        view 'home', engine: 'html.erb'
+        view 'index', engine: 'html.erb'
       end
 
       routing.on 'meditation' do
@@ -28,6 +28,32 @@ module MentalHealth
           end
         end
       end
+
+      routing.on 'history' do
+        routing.is do
+          routing.get do
+            view 'history', engine: 'html.erb'
+          end
+        end
+      end
+
+      # routing.on 'history' do
+      #   routing.is do
+      #     # POST /record/
+      #     routing.post do
+      #       account = routing.params['account']
+      #       routing.redirect "history/#{account}"
+      #     end
+      #   end
+      #   routing.on String do |account|
+      #     # GET /record/#{account}
+      #     routing.get do
+      #       user = Database::UserOrm.where(account: account).first
+      #       records = user.owned_records
+      #       view 'history', locals: { records: records }
+      #     end
+      #   end
+      # end
     end
   end
 end
