@@ -41,8 +41,31 @@ module MentalHealth
 
       routing.on 'meditation' do
         routing.is do
+          routing.post do
+            account = routing.params['account']
+            routing.redirect "meditation/#{account}"
+          end
+        end
+
+        routing.on String do |account|
           routing.get do
-            view 'meditation', engine: 'html.erb'
+            view 'meditation', engine: 'html.erb', locals: { account: account }
+          end
+        end
+      end
+
+      routing.on 'form' do
+        routing.is do
+          # POST /form/
+          routing.post do
+            account = routing.params['account']
+            routing.redirect "form/#{account}"
+          end
+        end
+        routing.on String do |account|
+          # GET /form/#{account}
+          routing.get do
+            view 'form', engine: 'html.erb', locals: { account: account }
           end
         end
       end
