@@ -12,27 +12,24 @@
       <div class="col"></div>
     </div>
     <div class="row">
-      <% courses.each do |course|
-        if course.owncategory.name == category.name
-      %>
+      <% records.each do |record| %>
       <div class="col-md-3">
         <div class="card">
-          <img class="card-img-top" src="<%= course.image %>" />
           <div class="card-body">
             <h5 class="card-title">
-              <a class="text-warning" href="<%= course.url %>" style="text-decoration:none; text-align: justify;">
-                <%= course.title %>
-              </a></h5>
+              <%= record.created_at.strftime("%F") %>
+            </h5>
             <p class="card-text">
-              <p>Price: <%= course.price %></p>
-            </p>
-            <p class="card-text">
-              <p>Rating: <%= course.rating %></p>
+              <p><%= record.owned_answers.map {|a| a.answer_content if a.question_num == 3}.join %></p>
+              <p>UserName: <%= record.id %></p>
+              <a href="/history-each-test/<%= record.id %>/<%= account %>">
+                <p> ➡
+              </a>
             </p>
           </div>
         </div>
       </div>
-    <% end; end %>
+    <% end%>
     </div>
   </div>
   <style>
