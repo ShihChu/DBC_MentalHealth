@@ -1,8 +1,13 @@
 <body class="home_body">
-  <div class="container-fluid">
-    <div class="row align-items-center">
-      <div class="col"></div>
-      <div class="col"></div>
-    </div>
+  <div class="container">
+    <form role="form" action="/index" method='POST' id='show-account-form'>
+      <div class="row align-items-center">
+        <div class="col-sm-8">
+          <h3> 帳號: </h3>
+          <input type='text' name='account' id='account_input' class="form-control" placeholder="e.g. AAA">
+          <button type='submit' id='account-form-submit' class='submit' value='submit' class="btn btn-info"> Show
+        </div>
+      </div>
+    </form>
   </div>
 </body>
