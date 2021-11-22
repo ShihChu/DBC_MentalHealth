@@ -8,6 +8,7 @@ Sequel.migration do
       primary_key :id
 
       String   :account, unique: true
+      String   :url, unique: true
       Boolean  :is_guided, null: false
 
       DateTime :created_at

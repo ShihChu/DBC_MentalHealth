@@ -26,13 +26,15 @@ module MentalHealth
           # POST /index/
           routing.post do
             account = routing.params['account']
+            user = Database::UserOrm.where(account: account).first
+            account = user.url
             routing.redirect "index/#{account}"
           end
         end
         routing.on String do |account|
           # GET /index/account
           routing.get do
-            view 'index', engine: 'html.erb', locals: { account: account}
+            view 'index', engine: 'html.erb', locals: { account: account }
           end
         end
       end
@@ -56,7 +58,7 @@ module MentalHealth
         routing.on String do |account|
           # GET /history/#{account}
           routing.get do
-            user = Database::UserOrm.where(account: account).first
+            user = Database::UserOrm.where(url: account).first
             records = user.owned_records
             view 'history-test', engine: 'html.erb', locals: { account: account, records: records }
           end
