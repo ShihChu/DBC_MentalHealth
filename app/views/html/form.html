@@ -119,7 +119,11 @@
 
             $('#form_answers').submit(function() {
                 var notOK = 0;
-                for(let count = 0; count <= 7; count++) {
+                var question_count;
+                if("對照組") question_count = 3;
+                else question_count = 7;
+
+                for(let count = 0; count <= question_count; count++) {
                     if($("*[name=" + count + "]").val() == "") {
                         alert("有部分題目尚未填寫完畢，請檢查一次");
                         notOK = 1;
