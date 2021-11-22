@@ -6,7 +6,7 @@
 
 .home_body {
     background-color: #EAF3F3;
-    background-image: url("/home_background.png");
+    background-image: url("../../public/home_background.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: 0px 120px;
@@ -16,7 +16,7 @@
 
 .meditation_body {
     background-color: #AACFD1;
-    background-image: url("/mediation_background.png");
+    background-image: url("../../public/mediation_background.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: 0px 97px;
@@ -28,6 +28,13 @@
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
+}
+
+h1 {
+    font-size: 40px;
+    line-height: 47px;
+    letter-spacing: -0.02em;
+    color: #484848;
 }
 
 h2 {
@@ -49,7 +56,7 @@ h2 {
     font-size: 40px;
 }
 
-.meditation_start_btn {
+.btn_click {
     background-color: #2A868C;
     width: 219px;
     height: 51px;
@@ -191,3 +198,71 @@ h2 {
     font-size: 30px;
 }
 /* end of count down clock */
+
+.guide_div {
+    background-color: #FEF8EA;
+    background-image: url("../../public/guid_text_background.png");
+    background-repeat: no-repeat;
+    background-size: 218.71px auto;
+
+    margin: 35px 18px;
+    border-radius: 10px;
+}
+
+.guide_text {
+    font-size: 18px;
+    line-height: 29px;
+    letter-spacing: -0.02em;
+    color: #484848;
+
+    padding: 22px 29px;
+}
+
+.question_div {
+    margin: 0px 30px 35px;
+}
+
+.question_title {
+    font-size: 24px;
+    line-height: 124%;
+    letter-spacing: -0.02em;
+    color: #484848;
+}
+
+.answer_btn {
+    width: 100%;
+    height: 41px;
+    background-color: #FFFFFF;
+    border: 1px solid #2A868C;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    font-size: 20px;
+    line-height: 23px;
+    letter-spacing: 0.05em;
+    color: #2A868C;
+}
+
+.checked {
+    background-color: #2A868C;
+    color: #FFFFFF;
+}
+
+textarea {
+    line-height: 29px;
+    height: 195px;
+}
+
+hr {
+    border: 1px solid #AACFD1;
+    width: 100%;
+}
+
+.finally {
+    color: #2A868C;
+    font-size: 40px;
+    line-height: 47px;
+    letter-spacing: -0.02em;
+    padding-left: 18px;
+    padding-top: 30px;
+}
