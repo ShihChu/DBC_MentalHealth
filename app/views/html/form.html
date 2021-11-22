@@ -15,7 +15,7 @@
                 <h1 class="font">填答每日小記</h1>
             </div>
 
-            <form id="form_answers" method="post" action="">
+            <form id="form_answers" method="post" action="form_complete.html">
                 <!-- part 1 -->
                 <div class="guide_div guide">
                     <p class="font guide_text">嗨，今天好嗎？在開始之前，邀請你用30秒的時間，以自己舒服的姿勢，以及自己喜歡的速度來進行深呼吸，讓身體放鬆，並且讓情緒沉澱。</p>
@@ -104,9 +104,9 @@
 
         <script>
             $(document).ready(function() {
-                // if("對照組") {  // 如果是對照組，hide實驗組題目
-                //     $(".guide").hide()
-                // }
+                if("對照組") {  // 如果是對照組，hide實驗組題目
+                    $(".guide").hide()
+                }
             });
         
             $(".answer_btn").click(function(){
@@ -115,6 +115,20 @@
                 $(this).css("backgroundColor", "#2A868C").css("color", "#fff");
                 $(this).addClass("checked");
                 $("input[name=1]").val($(this).html());
+            });
+
+            $('#form_answers').submit(function() {
+                var notOK = 0;
+                for(let count = 0; count <= 7; count++) {
+                    if($("*[name=" + count + "]").val() == "") {
+                        alert("有部分題目尚未填寫完畢，請檢查一次");
+                        notOK = 1;
+                        break;
+                    }
+                }
+                if(notOK == 1) return false;
+                else if (!confirm("確認繳交？")) return false;
+                else return true;
             });
         </script>
     </body>
