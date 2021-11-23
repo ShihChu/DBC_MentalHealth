@@ -6,7 +6,7 @@
 
 .home_body {
     background-color: #EAF3F3;
-    background-image: url("../../public/home_background.png");
+    background-image: url("/home_background.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: 0px 120px;
@@ -15,7 +15,7 @@
 
 .meditation_body {
     background-color: #AACFD1;
-    background-image: url("../../public/mediation_background.png");
+    background-image: url("/mediation_background.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: 0px 97px;
@@ -200,7 +200,7 @@ h2 {
 
 .guide_div {
     background-color: #FEF8EA;
-    background-image: url("../../public/guid_text_background.png");
+    background-image: url("/guid_text_background.png");
     background-repeat: no-repeat;
     background-size: 218.71px auto;
 

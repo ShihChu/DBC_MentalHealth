@@ -94,6 +94,8 @@ GEM
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    rbnacl (7.1.1)
+      ffi
     reek (6.0.6)
       kwalify (~> 0.7.0)
       parser (~> 3.0.0)
@@ -153,6 +155,7 @@ DEPENDENCIES
   pry
   puma (~> 5.5)
   rake
+  rbnacl
   reek
   rerun (~> 0)
   roda (~> 3.49)

@@ -14,7 +14,6 @@ module MentalHealth
                   key:   :recordbook_id
 
       plugin :timestamps, update_on_create: true
-
     end
   end
 end
