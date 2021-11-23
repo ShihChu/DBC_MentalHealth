@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="../assets/css/style.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body class="meditation_body">
+        <div class="container-fluid">
+            <div class="col-12 up-container" align="center">
+                <h2 class="font start_msg" style="color: #484848; padding-top: 201px;">
+                    請找一個安靜的地方<br><br>
+                    閉上眼睛，穩定呼吸，<br>
+                    想一下今天在 IG 上發生的事</h2>
+            </div>
+            
+            <div class="col-12 font bottom_card" style="height: 31.5%; padding: 0px; padding-top: 61px;" align="center">
+                <input class="btn_click" type="button" value="開始冥想">
+                <h2 class="font" style="font-size: 18px; margin-top: 13px;">可以開啟聲音以幫助冥想</h2>
+            </div>
+        </div>
+
+        <script>
+            $(".btn_click").click(function() {
+                $(this).next().hide();
+                $(this).replaceWith("<h2 class='font'>閉上眼睛 ...<br><br>保持穩定呼吸 ...</h2>")
+                // replace text with count down clock
+                const clock = `<div class="count-down">
+                                    <span class="spanA">
+                                        <em></em>
+                                    </span>
+                                    <span class="spanB">
+                                        <em></em>
+                                    </span>
+                                
+                                    <div class="inside_text">
+                                        <div class="font number">30</div><br>
+                                        <div class="font text">SECONDS</div>
+                                    </div>
+                                </div> `;
+                $(".start_msg").replaceWith(clock);
+                playAudio();
+            });
+
+            function playAudio() {
+                const audio = document.createElement("audio");
+                audio.src = "../public/meditation_music.mp3";
+                audio.play();
+            }
+
+            // change sec text
+            setInterval(setTime, 1000);
+            function setTime() {
+                var currentSec = $(".number").html();
+                currentSec--
+                $(".number").html(currentSec);
+                // hide the count down clock after 30 secs
+                if(currentSec == 0) {
+                    // hide count down clock
+                    $(".count-down").hide();
+                    // display finish img
+                    $(".up-container").html("<img src='../public/finish_mediation.png' width='279px'>");
+                    // replace bottom card as btn
+                    $(".bottom_card").html('<a href="form.html"><input class="form_btn" type="button" value="前往紀錄"></a>');
+                }
+            }
+        </script>
+    </body>
+</html>

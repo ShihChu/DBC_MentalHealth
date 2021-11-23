@@ -1,0 +1,13 @@
+---
+- account: AAA
+  is_guided: true
+- account: BBB
+  is_guided: true
+- account: CCC
+  is_guided: true
+- account: DDD
+  is_guided: false
+- account: EEE
+  is_guided: false
+- account: FFF
+  is_guided: false
