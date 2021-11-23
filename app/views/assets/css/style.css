@@ -208,6 +208,11 @@ h2 {
     border-radius: 10px;
 }
 
+.bless_div {
+    padding: 40px 30px;
+    background-color: #F6F6F6;
+}
+
 .guide_text {
     font-size: 18px;
     line-height: 29px;
@@ -262,7 +267,7 @@ hr {
     font-size: 40px;
     line-height: 47px;
     letter-spacing: -0.02em;
-    padding-left: 18px;
+    padding-left: 30px;
     padding-top: 30px;
 }
 

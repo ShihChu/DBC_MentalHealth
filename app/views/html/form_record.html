@@ -11,30 +11,33 @@
     </head>
     <body>
         <div class="container-fluid">
-            <div style="padding-top: 25%; padding-bottom: 3%; margin-bottom: 35px; height: 18.1%; background-color: #AACFD1;" align="center">
-                <h1 class="font">填答每日小記</h1>
+            <div style="padding-top: 25%; padding-bottom: 3%; margin-bottom: 35px; height: 18.1%; background-color: #AACFD1;">
+                <span class="back" style="padding-left: 30px;"><</span>
+                <span class="font" style="font-size: 24px; line-height: 124%; letter-spacing: -0.02em; color: #484848; padding-left: 15%;">11/08 紀錄的日期</span>
             </div>
 
             <form id="form_answers" method="post" action="form_complete.html">
+
+                <div class="question bless_div guide">
+                    <h1 class="font finally guide" style="padding-left: 0px;">祝福</h1>
+                    <div class="form-floating">
+                        <p class="font" name="7" style="font-size: 18px; color: #484848;" disabled></p>
+                    </div>
+                </div>
+
+                <h1 class="font finally guide">紀錄內容</h1>
                 <!-- part 1 -->
                 <div class="guide_div guide">
                     <p class="font guide_text">嗨，今天好嗎？在開始之前，邀請你用30秒的時間，以自己舒服的姿勢，以及自己喜歡的速度來進行深呼吸，讓身體放鬆，並且讓情緒沉澱。</p>
                 </div>
                 <div class="question question_div">
                     <p class="font question_title">請問你今天在Instagram上，花了多久時間呢？</p>
-                    <input type="hidden" name="1" value="">
-                    <label class="btn answer_btn" name="radio1">少於 5 分鐘</label><br>
-                    <label class="btn answer_btn" name="radio2">6 ～ 15 分鐘</label><br>
-                    <label class="btn answer_btn" name="radio3">16 ～ 30 分鐘</label><br>
-                    <label class="btn answer_btn" name="radio4">31 ～ 59 分鐘</label><br>
-                    <label class="btn answer_btn" name="radio5">1 小時 ～ 1 小時 30 分鐘</label><br>
-                    <label class="btn answer_btn" name="radio6">1 小時 31 分鐘～ 2 小時</label><br>
-                    <label class="btn answer_btn" name="radio7">超過 2 小時</label>
+                    <p class="font" name="1" style="font-size: 18px; color: #484848;" disabled></p>
                 </div>
                 <div class="question question_div">
                     <p class="font question_title">在你使用Instagram的時間裡，大都做了什麼事？ </p>
                     <div class="form-floating">
-                        <textarea class="font form-control" rows="6" placeholder="寫點今天做的事情..." form="form_answers" name="2"></textarea>
+                        <textarea class="font form-control" rows="6" placeholder="寫點今天做的事情..." form="form_answers" name="2" disabled></textarea>
                     </div>
                 </div>
                 <hr class="guide">
@@ -46,13 +49,13 @@
                 <div class="question question_div">
                     <p class="font question_title">請問你此刻的情緒是什麼？</p>
                     <div class="form-floating">
-                        <textarea class="font form-control" rows="6" placeholder="用幾個形容詞描述一下情緒...." form="form_answers" name="3"></textarea>
+                        <textarea class="font form-control" rows="6" placeholder="用幾個形容詞描述一下情緒...." form="form_answers" name="3" disabled></textarea>
                     </div>
                 </div>
                 <div class="question question_div guide">
                     <p class="font question_title">這個情緒是否有帶給你任何身體的感受或變化？</p>
                     <div class="form-floating">
-                        <textarea class="font form-control" rows="6" placeholder="描述一下身體的感受..." form="form_answers" name="4"></textarea>
+                        <textarea class="font form-control" rows="6" placeholder="描述一下身體的感受..." form="form_answers" name="4" disabled></textarea>
                     </div>
                 </div>
                 <hr class="guide">
@@ -65,7 +68,7 @@
                 <div class="question question_div guide">
                     <p class="font question_title">你認為目前的情緒及身體感受，背後的原因或意義是什麼？</p>
                     <div class="form-floating">
-                        <textarea class="font form-control" rows="6" placeholder="想想看可能的原因是什麼呢..." form="form_answers" name="5"></textarea>
+                        <textarea class="font form-control" rows="6" placeholder="想想看可能的原因是什麼呢..." form="form_answers" name="5" disabled></textarea>
                     </div>
                 </div>
                 <hr class="guide">
@@ -79,61 +82,39 @@
                 <div class="question question_div guide">
                     <p class="font question_title">如果可以，你希望自己的情緒或狀態如何改變或維持呢？</p>
                     <div class="form-floating">
-                        <textarea class="font form-control" rows="6" placeholder="用幾個形容詞描述一下情緒...." form="form_answers" name="6"></textarea>
-                    </div>
-                </div>
-                <hr class="guide">
-
-                <!-- final part -->
-                <h1 class="font finally guide">最後</h1>
-                <div class="guide_div guide">
-                    <p class="font guide_text">我們即將結束今天的冰山探索旅程，辛苦了！別忘了：不論你探索到什麼樣的故事，都是你認真活在當下的深刻足跡唷！</p>
-                </div>
-                <div class="question question_div guide">
-                    <p class="font question_title">現在，邀請你給當下的自己一些祝福或鼓勵的話。</p>
-                    <div class="form-floating">
-                        <textarea class="font form-control" rows="6" placeholder="打入祝福的話..." form="form_answers" name="7"></textarea>
+                        <textarea class="font form-control" rows="6" placeholder="用幾個形容詞描述一下情緒...." form="form_answers" name="6" disabled></textarea>
                     </div>
                 </div>
 
-                <input class="btn_click" style="position:relative;" type="submit" value="送出">
+                <input class="btn_click" style="position:relative;" type="submit" value="回上一頁">
                 <br><br><br>    
             </form>
 
         </div>
 
         <script>
+
             $(document).ready(function() {
                 if("對照組") {  // 如果是對照組，hide實驗組題目
                     $(".guide").hide()
                 }
+
+                // 把 ansers 存入 1~7 的答案
+                const answers = ["6 ～ 15 分鐘", "222", "33333", "44", "55555", "6666666666", "77777777777777"];
+                answers.forEach((content, index) => {
+                    var itsName = index+1;
+                    $(`*[name=${itsName}]`).html(content)
+                });
             });
         
-            $(".answer_btn").click(function(){
-                $(".checked").css("backgroundColor", "#fff").css("color", "#2A868C");
-                $(".checked").removeClass("checked");
-                $(this).css("backgroundColor", "#2A868C").css("color", "#fff");
-                $(this).addClass("checked");
-                $("input[name=1]").val($(this).html());
+            $(".btn_click").click(function(){
+                window.history.go(-1);
             });
 
-            $('#form_answers').submit(function() {
-                var notOK = 0;
-                var question_count;
-                if("對照組") question_count = 3;
-                else question_count = 7;
-
-                for(let count = 0; count <= question_count; count++) {
-                    if($("*[name=" + count + "]").val() == "") {
-                        alert("有部分題目尚未填寫完畢，請檢查一次");
-                        notOK = 1;
-                        break;
-                    }
-                }
-                if(notOK == 1) return false;
-                else if (!confirm("確認繳交？")) return false;
-                else return true;
+            $(".back").click(function(){
+                window.history.go(-1);
             });
+
         </script>
     </body>
 </html>
