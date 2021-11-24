@@ -90,8 +90,7 @@ h2 {
     padding-left: 22px;
     padding-right: 19px;
     margin-bottom: 0px;
-    bottom: 0px;
-    position: absolute;
+    position: relative;
     margin-top: 15%;
 }
 
