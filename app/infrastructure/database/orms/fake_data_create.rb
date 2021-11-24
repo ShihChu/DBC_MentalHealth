@@ -17,10 +17,10 @@ module MentalHealth
         RECORD_FILE.map do |data|
           Database::RecordOrm.create(data)
         end
-        # # answer
-        # ANSWER_FILE.map do |data|
-        #   Database::AnswerOrm.create(data)
-        # end
+        # answer
+        ANSWER_FILE.map do |data|
+          Database::AnswerOrm.create(data)
+        end
       end
     end
   end

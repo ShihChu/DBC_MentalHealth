@@ -1,13 +1,19 @@
 ---
 - account: AAA
+  url: um5kuSGwD5KFoyEg5j7bEh1MBL2im13Ae1FN1SSeSAg=
   is_guided: true
 - account: BBB
+  url: U7tVbCAN9GgFJWBkT/9+IxR3rwkB7/JT8sqdP+EYY1M=
   is_guided: true
 - account: CCC
+  url: FK04l24FU6dOLWS7MB6btpyH0bkwzYYdSKejx9qWAx4=
   is_guided: true
 - account: DDD
+  url: CcuXqGq1htPBcx/bjrrS/szry07ZgIFIXl9hHqec45w=
   is_guided: false
 - account: EEE
+  url: yt+G1CfM49yvmu7h8t7OgYgHfpEwh4RWLY2fgXnZpFg=
   is_guided: false
 - account: FFF
+  url: ej9M74WpABnfLYVCqxnBjRAnw4GkKj2llHXv1qbe+f8=
   is_guided: false
