@@ -86,12 +86,14 @@ h2 {
 .bottom_card {
     background-color: white;
     width: 105%;
+    height: 304px;
     padding-top: 24px;
     padding-left: 22px;
     padding-right: 19px;
     margin-bottom: 0px;
     position: relative;
     margin-top: 15%;
+    overflow: hidden;
 }
 
 .no_record {
@@ -104,6 +106,51 @@ h2 {
     line-height: 195px;
     font-size: 30px;
     letter-spacing: 0.05em;
+}
+
+/* home page bottom cards */
+.swiper-container {
+    width: 150px;    
+    height: 186px;
+}  
+
+.card_title {
+    background-color: #FEF8EA; 
+    border-radius: 10px 10px 0px 0px; 
+    padding: 8px 14px; 
+    height: 30px;
+}
+
+.card_header {
+    font-size: 13px;
+    color: #484848;
+    line-height: 15px; 
+    margin: 0px;
+}
+
+.card_body {
+    background-color: #FCE5AA; 
+    border-radius: 0px 0px 10px 10px; 
+    padding: 30px 14px 15px; 
+    height: 165px;
+}
+
+.card_content {
+    font-size: 13px;line-height: 
+    15px;color: #484848; 
+    overflow: hidden; 
+    display: -webkit-box; 
+    -webkit-line-clamp: 5; 
+    -webkit-box-orient: vertical;
+}
+
+.card_btn {
+    position: absolute; 
+    bottom: 15px; 
+    left: 58px; 
+    font-size: 13px; 
+    line-height: 15px; 
+    margin: 0px;
 }
 
 /* count down clock */
