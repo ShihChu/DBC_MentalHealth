@@ -12,12 +12,17 @@ module MentalHealth
         rebuild_entity Database::UserOrm.first(account: account)
       end
 
+      def self.find_url(url)
+        rebuild_entity Database::UserOrm.first(url: url)
+      end
+
       def self.rebuild_entity(db_record)
         return nil unless db_record
 
         Entity::User.new(
           id:        db_record.id,
           account:   db_record.account,
+          url:       db_record.url,
           is_guided: db_record.is_guided
         )
       end
