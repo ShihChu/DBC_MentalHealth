@@ -50,9 +50,10 @@ module MentalHealth
 
             session[:watching] = user
             records = user.owned_records
-            binding.pry
-            freeze_time = 12*60*60 # 12小時內無法填寫
-            is_record = records[-1].created_at + freeze_time > Time.now() ? true : false
+            if !records.empty?
+              freeze_time = 12*60*60 # 12小時內無法填寫
+              is_record = records[-1].created_at + freeze_time > Time.now() ? true : false
+            end
             
             view 'index', engine: 'html.erb', locals: { user: user, records: records, account: user.url, is_record: is_record}
           end
@@ -117,7 +118,6 @@ module MentalHealth
             user = session[:watching]
             record = Database::RecordOrm.where(id: record).first
             record.update(access_time: record.access_time+1)
-            binding.pry
             answers = record.owned_answers.map(&:answer_content)
             view 'form_record', engine: 'html.erb', locals: { user: user, record: record, answers: answers }
           end
