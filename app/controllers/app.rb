@@ -22,6 +22,14 @@ module MentalHealth
         view 'home', engine: 'html.erb'
       end
 
+      routing.on 'error' do
+        routing.is do
+          routing.get do
+            view 'error', engine: 'html.erb'
+          end
+        end
+      end
+
       routing.on 'index' do
         routing.is do
           # POST /index/
@@ -35,8 +43,18 @@ module MentalHealth
           # GET /index/account
           routing.get do
             user = Database::UserOrm.where(url: account).first
+            if user.nil?
+              routing.redirect "/error"
+              routing.halt 400
+            end
+
             session[:watching] = user
-            view 'index', engine: 'html.erb', locals: { account: user.url }
+            records = user.owned_records
+            binding.pry
+            freeze_time = 12*60*60 # 12小時內無法填寫
+            is_record = records[-1].created_at + freeze_time > Time.now() ? true : false
+            
+            view 'index', engine: 'html.erb', locals: { user: user, records: records, account: user.url, is_record: is_record}
           end
         end
       end
@@ -44,7 +62,8 @@ module MentalHealth
       routing.on 'meditation' do
         routing.on String do |account|
           routing.get do
-            view 'meditation', engine: 'html.erb', locals: { account: session[:watching].url }
+            user = session[:watching]
+            view 'meditation', engine: 'html.erb', locals: { account: user.url }
           end
         end
       end
@@ -53,7 +72,8 @@ module MentalHealth
         routing.on String do |account|
           # GET /form/#{account}
           routing.get do
-            view 'form', engine: 'html.erb', locals: { account: session[:watching].url }
+            user = session[:watching]
+            view 'form', engine: 'html.erb', locals: { account: user.url, user: user }
           end
         end
       end
@@ -79,40 +99,27 @@ module MentalHealth
         end
       end
 
-      routing.on 'history-test' do
-        routing.is do
-          # POST /history/
-          routing.post do
-            account = routing.params['account']
-            routing.redirect "history-test/#{account}"
-          end
-        end
+      routing.on 'all_records' do
         routing.on String do |account|
-          # GET /history/#{account}
+          # GET /all_records/#{account}
           routing.get do
-            user = Database::UserOrm.where(url: account).first
+            user = session[:watching]
             records = user.owned_records
-            view 'history-test', engine: 'html.erb', locals: { account: account, records: records }
+            view 'all_records', engine: 'html.erb', locals: { user: user, records: records, account: user.url }
           end
         end
       end
 
-      routing.on 'history-each-test' do
-        routing.is do
-          # POST /history-each/
-          routing.post do
-            account = routing.params['account']
-            record = routing.params['record']
-            # account = Database::RecordOrm.where(id: record).first.owner
-            routing.redirect "history-each-test/#{record}/#{account}"
-          end
-        end
+      routing.on 'form_record' do
         routing.on String do |record|
-          # GET /history-each-test/#{record}
+          # GET /form_record/#{record}
           routing.get do
+            user = session[:watching]
             record = Database::RecordOrm.where(id: record).first
-            answers = record.owned_answers
-            view 'history-each-test', engine: 'html.erb', locals: { answers: answers }
+            record.update(access_time: record.access_time+1)
+            binding.pry
+            answers = record.owned_answers.map(&:answer_content)
+            view 'form_record', engine: 'html.erb', locals: { user: user, record: record, answers: answers }
           end
         end
       end
