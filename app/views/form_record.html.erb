@@ -1,0 +1,97 @@
+<body>
+  <div class="container-fluid">
+    <div style="padding-top: 25%; padding-bottom: 3%; margin-bottom: 35px; height: 18.1%; background-color: #AACFD1;">
+        <h1 class="font" style="color: #484848;"><a href="javascript:history.back()"><i class="back fas fa-arrow-left" style="padding-left: 30px;"></i></a><b style="padding-left: 12%;"><%= record.created_at.strftime("%F") %></b></h1>
+    </div>
+
+    <form id="form_answers" action="javascript:history.back()" method="get">
+
+        <div class="question bless_div guide">
+            <h1 class="font finally guide" style="padding-left: 0px;">祝福</h1>
+            <div class="form-floating">
+                <p class="font" name="7" style="font-size: 18px; color: #484848;" disabled></p>
+            </div>
+        </div>
+
+        <h1 class="font finally guide">紀錄內容</h1>
+        <!-- part 1 -->
+        <div class="guide_div guide">
+            <p class="font guide_text">嗨，今天好嗎？在開始之前，邀請你用30秒的時間，以自己舒服的姿勢，以及自己喜歡的速度來進行深呼吸，讓身體放鬆，並且讓情緒沉澱。</p>
+        </div>
+        <div class="question question_div">
+            <p class="font question_title">請問你今天在Instagram上，花了多久時間呢？</p>
+            <p class="font" name="1" style="font-size: 18px; color: #484848;" disabled></p>
+        </div>
+        <div class="question question_div">
+            <p class="font question_title">在你使用Instagram的時間裡，大都做了什麼事？ </p>
+            <div class="form-floating">
+                <textarea class="font form-control" rows="6" placeholder="寫點今天做的事情..." form="form_answers" name="2" disabled></textarea>
+            </div>
+        </div>
+        <hr class="guide">
+
+        <!-- part 2 -->
+        <div class="guide_div guide">
+            <p class="font guide_text">現在，請想像自己是一座冰山，海平面以上，是你今天所展現出來、容易被看到與理解的行為。海平面以下，是比較難被發現的情緒。邀請你一起來探索，這座冰山在海平面下的樣貌吧！</p>
+        </div>
+        <div class="question question_div">
+            <p class="font question_title">請問你此刻的情緒是什麼？</p>
+            <div class="form-floating">
+                <textarea class="font form-control" rows="6" placeholder="用幾個形容詞描述一下情緒...." form="form_answers" name="3" disabled></textarea>
+            </div>
+        </div>
+        <div class="question question_div guide">
+            <p class="font question_title">這個情緒是否有帶給你任何身體的感受或變化？</p>
+            <div class="form-floating">
+                <textarea class="font form-control" rows="6" placeholder="描述一下身體的感受..." form="form_answers" name="4" disabled></textarea>
+            </div>
+        </div>
+        <hr class="guide">
+
+        <!-- part 3 -->
+        <div class="guide_div guide">
+            <p class="font guide_text">如果可以再往海底下潛，深一點，<br>
+                或許還有更多值得探索的故事哦！</p>
+        </div>
+        <div class="question question_div guide">
+            <p class="font question_title">你認為目前的情緒及身體感受，背後的原因或意義是什麼？</p>
+            <div class="form-floating">
+                <textarea class="font form-control" rows="6" placeholder="想想看可能的原因是什麼呢..." form="form_answers" name="5" disabled></textarea>
+            </div>
+        </div>
+        <hr class="guide">
+
+        <!-- part 4 -->
+        <div class="guide_div guide">
+            <p class="font guide_text">謝謝你願意看見這些感受和原因，相信這些感受都是很真實的！<br>
+                讓我們一起練習接納這些情緒與感受，<br>
+                試著在心裡默念「我願意跟這個感覺更靠近一點、我願意接納有這些感受的自己」</p>
+        </div>
+        <div class="question question_div guide">
+            <p class="font question_title">如果可以，你希望自己的情緒或狀態如何改變或維持呢？</p>
+            <div class="form-floating">
+                <textarea class="font form-control" rows="6" placeholder="用幾個形容詞描述一下情緒...." form="form_answers" name="6" disabled></textarea>
+            </div>
+        </div>
+
+        <input class="btn_click" style="position:relative;" type="submit" value="回上一頁">
+        <br><br><br>    
+    </form>
+
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      if(<%= !user.is_guided %>) {  // 如果是對照組，hide實驗組題目
+          $(".guide").hide()
+      }
+
+      // 把 ansers 存入 1~7 的答案
+      const answers = <%= answers %>;
+      answers.forEach((content, index) => {
+        var itsName = index+1;
+        $(`*[name=${itsName}]`).html(content)
+      });
+    });
+  </script>
+</body>

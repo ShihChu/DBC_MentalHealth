@@ -93,7 +93,7 @@
 
     <script>
         $(document).ready(function() {
-            if("對照組") {  // 如果是對照組，hide實驗組題目
+            if(<%= !user.is_guided %>) {  // 如果是對照組，hide實驗組題目
                 $(".guide").hide()
             }
         });
@@ -109,7 +109,7 @@
         $('#form_answers').submit(function() {
             var notOK = 0;
             var question_count;
-            if("對照組") question_count = 3;
+            if(<%= !user.is_guided %>) question_count = 3;
             else question_count = 7;
 
             for(let count = 0; count <= question_count; count++) {

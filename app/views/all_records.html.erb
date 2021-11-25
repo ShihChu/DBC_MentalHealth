@@ -1,0 +1,38 @@
+<body>
+    <div class="container-fluid">
+        <div style="padding-top: 11%; height: 18.1%; position: relative;">
+            <h1 class="font" style="color: #484848;"><a href="javascript:history.back()"><i class="back fas fa-arrow-left" style="padding-left: 30px;"></i></a><b style="padding-left: 15%;">每日紀錄</b></h1>
+        </div>
+
+        <div class="font record_cards"> </div>
+
+    </div>
+
+    <script>
+
+        $(document).ready(function() {
+            var records_html = "";              // 把資料轉換成 html
+            var card_data = new Array();        // 紀錄資料
+            if(<%= !user.is_guided %>) {
+              card_data = <%= records.map { |r| [r.id, r.created_at.strftime("%F (%a)"), r.owned_answers.map {|a| a.answer_content if a.question_num == 3}.join]} %>;
+            } else {
+              card_data = <%= records.map { |r| [r.id, r.created_at.strftime("%F (%a)"), r.owned_answers.map {|a| a.answer_content if a.question_num == 7}.join]} %>;
+            }
+
+            card_data.reverse().forEach(content => {
+                records_html += `<div class="cards">
+                                    <div class="card_title">
+                                        <p class="card_header font">${content[1]}</p>
+                                    </div>
+                                    <div class="card_body">
+                                        <p class="card_content font">${content[2]}</p>
+                                        <a href="/form_record/${content[0]}/<%= account %>"><h2 class="records_more_btn font">查看更多 <i class="fas fa-arrow-circle-right"></i></h2></a>
+                                    </div>
+                                </div>`;
+            });
+
+            $(".record_cards").html(records_html);
+        });
+        
+    </script>
+</body>
