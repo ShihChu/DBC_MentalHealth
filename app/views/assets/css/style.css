@@ -119,6 +119,7 @@ h2 {
     border-radius: 10px 10px 0px 0px; 
     padding: 8px 14px; 
     height: 30px;
+    text-align: center;
 }
 
 .card_header {
@@ -132,7 +133,7 @@ h2 {
     position: relative;
     background-color: #FCE5AA; 
     border-radius: 0px 0px 10px 10px; 
-    padding: 16px 14px 15px; 
+    padding: 10px 14px 15px; 
     height: 170px;
 }
 
@@ -157,7 +158,7 @@ h2 {
 .card_btn {
     position: absolute; 
     bottom: 15px; 
-    left: 58px; 
+    left: 40%; 
     font-size: 13px; 
     line-height: 15px; 
     margin: 0px;

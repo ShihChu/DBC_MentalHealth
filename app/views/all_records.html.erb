@@ -14,9 +14,9 @@
             var records_html = "";              // 把資料轉換成 html
             var card_data = new Array();        // 紀錄資料
             if(<%= !user.is_guided %>) {
-              card_data = <%= records.map { |r| [r.id, r.created_at.strftime("%F (%a)"), r.owned_answers.map {|a| a.answer_content if a.question_num == 1}.join]} %>;
+                card_data = <%= records.map { |r| [r.id, r.created_at.strftime("%m / %d (%a)"), r.owned_answers.map {|a| a.answer_content if a.question_num == 1}.join]} %>;
             } else {
-                card_data = <%= records.map { |r| [r.id, r.created_at.strftime("%F (%a)"), r.owned_answers.map {|a| a.answer_content if a.question_num == 1}.join, r.owned_answers.map {|a| a.answer_content if a.question_num == 7}.join]} %>;
+                card_data = <%= records.map { |r| [r.id, r.created_at.strftime("%m / %d (%a)"), r.owned_answers.map {|a| a.answer_content if a.question_num == 1}.join, r.owned_answers.map {|a| a.answer_content if a.question_num == 7}.join]} %>;
             }
 
             card_data.reverse().forEach(content => {

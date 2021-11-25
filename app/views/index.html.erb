@@ -31,9 +31,9 @@
             if(<%= records.length != 0 %>) {  // 如果有資料就顯示下面的小卡
                 var card_data = new Array();
                 if(<%= !user.is_guided %>) {
-                    card_data = <%= records.map { |r| [r.id, r.created_at.strftime("%F (%a)"), r.owned_answers.map {|a| a.answer_content if a.question_num == 1}.join]} %>;
+                    card_data = <%= records.map { |r| [r.id, r.created_at.strftime("%m / %d (%a)"), r.owned_answers.map {|a| a.answer_content if a.question_num == 1}.join]} %>;
                 } else {
-                    card_data = <%= records.map { |r| [r.id, r.created_at.strftime("%F (%a)"), r.owned_answers.map {|a| a.answer_content if a.question_num == 1}.join, r.owned_answers.map {|a| a.answer_content if a.question_num == 7}.join]} %>;
+                    card_data = <%= records.map { |r| [r.id, r.created_at.strftime("%m / %d (%a)"), r.owned_answers.map {|a| a.answer_content if a.question_num == 1}.join, r.owned_answers.map {|a| a.answer_content if a.question_num == 7}.join]} %>;
                 }
 
                 // create cards html
