@@ -17,7 +17,7 @@
             
         </div>
         <div class="col-12 font bottom_card" style="height: 304px;">
-            <p style="font-size: 24px; line-height: 28px; letter-spacing: -0.02em; display: inline; float:left;">我的祝福 & 紀錄 </p>
+            <p style="font-size: 24px; line-height: 28px; letter-spacing: -0.02em; display: inline; float:left;">我的<b class="guide">祝福 & </b>紀錄 </p>
             <a href='/all_records/<%= account %>'>
                 <p style="float:right; display: inline; color: grey; font-size: 13px; line-height: 15px; margin-top: 5px;">所有紀錄 <img src="/further_info_right_arrow.png" width="14px"></p> 
             </a>
@@ -28,7 +28,7 @@
     </div>
     <script>
         $(document).ready(function() {
-            if(<%= records != nil %>) {  // 如果有資料就顯示下面的小卡
+            if(<%= records.length != 0 %>) {  // 如果有資料就顯示下面的小卡
                 var card_data = new Array();
                 if(<%= !user.is_guided %>) {
                     card_data = <%= records.map { |r| [r.id, r.created_at.strftime("%F (%a)"), r.owned_answers.map {|a| a.answer_content if a.question_num == 3}.join]} %>;
