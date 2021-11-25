@@ -31,26 +31,44 @@
             if(<%= records.length != 0 %>) {  // 如果有資料就顯示下面的小卡
                 var card_data = new Array();
                 if(<%= !user.is_guided %>) {
-                    card_data = <%= records.map { |r| [r.id, r.created_at.strftime("%F (%a)"), r.owned_answers.map {|a| a.answer_content if a.question_num == 3}.join]} %>;
+                    card_data = <%= records.map { |r| [r.id, r.created_at.strftime("%F (%a)"), r.owned_answers.map {|a| a.answer_content if a.question_num == 1}.join]} %>;
                 } else {
-                    card_data = <%= records.map { |r| [r.id, r.created_at.strftime("%F (%a)"), r.owned_answers.map {|a| a.answer_content if a.question_num == 7}.join]} %>;
+                    card_data = <%= records.map { |r| [r.id, r.created_at.strftime("%F (%a)"), r.owned_answers.map {|a| a.answer_content if a.question_num == 1}.join, r.owned_answers.map {|a| a.answer_content if a.question_num == 7}.join]} %>;
                 }
 
                 // create cards html
                 var card_html = `<div class="swiper-container">
                                     <div class="swiper-wrapper">`;
                 card_data.reverse().forEach(content => {
-                    card_html += `<div class="swiper-slide">
-                                    <div class="slide_card">
-                                        <div class="card_title">
-                                            <p class="card_header font">${content[1]}</p>
-                                        </div>
-                                        <div class="card_body">
-                                            <p class="card_content font">${content[2]}</p>
-                                            <a href="/form_record/${content[0]}/<%= account %>"><h2 class="card_btn font">查看更多 <i class="fas fa-arrow-circle-right"></i></h2></a>
-                                        </div>
-                                    </div>
-                                </div>`;
+                    if(<%= !user.is_guided %>) {
+                        card_html += `<div class="swiper-slide">
+                                            <div class="slide_card">
+                                                <div class="card_title">
+                                                    <p class="card_header font">${content[1]}</p>
+                                                </div>
+                                                <div class="card_body">
+                                                    <b class="card_content_title">使用時間</b><br>
+                                                    <p class="card_content font">${content[2]}</p>
+                                                    <a href="/form_record/${content[0]}/<%= account %>"><h2 class="card_btn font">查看更多 <i class="fas fa-arrow-circle-right"></i></h2></a>
+                                                </div>
+                                            </div>
+                                        </div>`;
+                    } else {
+                        card_html += `<div class="swiper-slide">
+                                            <div class="slide_card">
+                                                <div class="card_title">
+                                                    <p class="card_header font">${content[1]}</p>
+                                                </div>
+                                                <div class="card_body">
+                                                    <b class="card_content_title">使用時間</b><br>
+                                                    <p class="card_content font">${content[2]}</p>
+                                                    <b class="card_content_title">我的祝福</b><br>
+                                                    <p class="card_content font">${content[3]}</p>
+                                                    <a href="/form_record/${content[0]}/<%= account %>"><h2 class="card_btn font">查看更多 <i class="fas fa-arrow-circle-right"></i></h2></a>
+                                                </div>
+                                            </div>
+                                        </div>`;
+                    }
                 });
                 card_html += "</div></div>";
 

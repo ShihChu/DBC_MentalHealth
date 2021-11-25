@@ -132,13 +132,22 @@ h2 {
     position: relative;
     background-color: #FCE5AA; 
     border-radius: 0px 0px 10px 10px; 
-    padding: 30px 14px 15px; 
-    height: 165px;
+    padding: 16px 14px 15px; 
+    height: 170px;
+}
+
+.card_content_title {
+    font-size: 13px;
+    line-height: 15px;
+    padding-bottom: 7px;
 }
 
 .card_content {
-    font-size: 13px;line-height: 
-    15px;color: #484848; 
+    font-size: 12px;
+    font-weight: lighter;
+    padding-top: 7px;
+    line-height: 13px;
+    color: #484848; 
     overflow: hidden; 
     display: -webkit-box; 
     -webkit-line-clamp: 5; 
