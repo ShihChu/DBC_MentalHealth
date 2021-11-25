@@ -11,13 +11,14 @@ module MentalHealth
     plugin :assets, css: 'style.css', path: 'app/views/assets'
     plugin :public, root: 'app/views/public'
     plugin :halt
-
+    
     route do |routing|
       routing.assets # load CSS
       routing.public
 
       # GET /
       routing.root do
+        session[:watching] ||= []
         view 'home', engine: 'html.erb'
       end
 
@@ -27,45 +28,53 @@ module MentalHealth
           routing.post do
             account = routing.params['account']
             user = Database::UserOrm.where(account: account).first
-            account = user.url
-            routing.redirect "index/#{account}"
+            routing.redirect "index/#{user.url}"
           end
         end
         routing.on String do |account|
           # GET /index/account
           routing.get do
-            view 'index', engine: 'html.erb', locals: { account: account }
+            user = Database::UserOrm.where(url: account).first
+            session[:watching] = user
+            view 'index', engine: 'html.erb', locals: { account: user.url }
           end
         end
       end
 
       routing.on 'meditation' do
-        routing.is do
-          routing.post do
-            account = routing.params['account']
-            routing.redirect "meditation/#{account}"
-          end
-        end
-
         routing.on String do |account|
           routing.get do
-            view 'meditation', engine: 'html.erb', locals: { account: account }
+            view 'meditation', engine: 'html.erb', locals: { account: session[:watching].url }
           end
         end
       end
 
       routing.on 'form' do
-        routing.is do
-          # POST /form/
-          routing.post do
-            account = routing.params['account']
-            routing.redirect "form/#{account}"
-          end
-        end
         routing.on String do |account|
           # GET /form/#{account}
           routing.get do
-            view 'form', engine: 'html.erb', locals: { account: account }
+            view 'form', engine: 'html.erb', locals: { account: session[:watching].url }
+          end
+        end
+      end
+
+      routing.on 'form_complete' do
+        routing.is do
+          # POST /form_complete/
+          routing.post do
+            user = session[:watching]
+            if user != nil
+              record = Database::RecordOrm.create(access_time: 0, owner_id: session[:watching].id)
+              num = user.is_guided ? 7 : 3 #題數
+              (1..num).each { |i| Database::AnswerOrm.create(recordbook_id: record.id, question_num: i, answer_content: routing.params["#{i}"])}
+            end
+            routing.redirect "form_complete/#{user.url}}"
+          end
+        end
+        routing.on String do |account|
+          # GET /form_complete/#{account}
+          routing.get do
+            view 'form_complete', engine: 'html.erb', locals: { account: session[:watching].url }
           end
         end
       end
@@ -94,7 +103,6 @@ module MentalHealth
           routing.post do
             account = routing.params['account']
             record = routing.params['record']
-            binding.pry
             # account = Database::RecordOrm.where(id: record).first.owner
             routing.redirect "history-each-test/#{record}/#{account}"
           end

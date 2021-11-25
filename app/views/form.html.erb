@@ -1,10 +1,10 @@
 <body>
     <div class="container-fluid">
-        <div style="padding-top: 15%; padding-bottom: 3%; margin-bottom: 35px; height: 18.1%; background-color: #AACFD1;" align="center">
+        <div style="padding-top: 25%; padding-bottom: 3%; margin-bottom: 35px; height: 18.1%; background-color: #AACFD1;" align="center">
             <h1 class="font">填答每日小記</h1>
         </div>
 
-        <form id="form_answers" method="post" action="/validation">
+        <form role="form" id="form_answers" method="POST" action="/form_complete">
             <!-- part 1 -->
             <div class="guide_div guide">
                 <p class="font guide_text">嗨，今天好嗎？在開始之前，邀請你用30秒的時間，以自己舒服的姿勢，以及自己喜歡的速度來進行深呼吸，讓身體放鬆，並且讓情緒沉澱。</p>
@@ -23,7 +23,7 @@
             <div class="question question_div">
                 <p class="font question_title">在你使用Instagram的時間裡，大都做了什麼事？ </p>
                 <div class="form-floating">
-                    <textarea class="font form-control" rows="6" placeholder="寫點今天做的事情..." form="form_answers" name="2"></textarea>
+                    <textarea class="font form-control" rows="6" placeholder="寫點今天做的事情..." name="2"></textarea>
                 </div>
             </div>
             <hr class="guide">
@@ -35,13 +35,13 @@
             <div class="question question_div">
                 <p class="font question_title">請問你此刻的情緒是什麼？</p>
                 <div class="form-floating">
-                    <textarea class="font form-control" rows="6" placeholder="用幾個形容詞描述一下情緒...." form="form_answers" name="3"></textarea>
+                    <textarea class="font form-control" rows="6" placeholder="用幾個形容詞描述一下情緒...." name="3"></textarea>
                 </div>
             </div>
             <div class="question question_div guide">
                 <p class="font question_title">這個情緒是否有帶給你任何身體的感受或變化？</p>
                 <div class="form-floating">
-                    <textarea class="font form-control" rows="6" placeholder="描述一下身體的感受..." form="form_answers" name="4"></textarea>
+                    <textarea class="font form-control" rows="6" placeholder="描述一下身體的感受..." name="4"></textarea>
                 </div>
             </div>
             <hr class="guide">
@@ -54,7 +54,7 @@
             <div class="question question_div guide">
                 <p class="font question_title">你認為目前的情緒及身體感受，背後的原因或意義是什麼？</p>
                 <div class="form-floating">
-                    <textarea class="font form-control" rows="6" placeholder="想想看可能的原因是什麼呢..." form="form_answers" name="5"></textarea>
+                    <textarea class="font form-control" rows="6" placeholder="想想看可能的原因是什麼呢..." name="5"></textarea>
                 </div>
             </div>
             <hr class="guide">
@@ -68,7 +68,7 @@
             <div class="question question_div guide">
                 <p class="font question_title">如果可以，你希望自己的情緒或狀態如何改變或維持呢？</p>
                 <div class="form-floating">
-                    <textarea class="font form-control" rows="6" placeholder="用幾個形容詞描述一下情緒...." form="form_answers" name="6"></textarea>
+                    <textarea class="font form-control" rows="6" placeholder="用幾個形容詞描述一下情緒...." name="6"></textarea>
                 </div>
             </div>
             <hr class="guide">
@@ -81,21 +81,21 @@
             <div class="question question_div guide">
                 <p class="font question_title">現在，邀請你給當下的自己一些祝福或鼓勵的話。</p>
                 <div class="form-floating">
-                    <textarea class="font form-control" rows="6" placeholder="打入祝福的話..." form="form_answers" name="7"></textarea>
+                    <textarea class="font form-control" rows="6" placeholder="打入祝福的話..." name="7"></textarea>
                 </div>
             </div>
 
-            <input class="btn_click" style="position:relative;" type="submit" value="送出" center>
-            <br><br><br>    
+            <input class="btn_click" style="position:relative;" type="submit" value="送出">
+        
         </form>
-
+        <br><br><br>    
     </div>
 
     <script>
         $(document).ready(function() {
-            // if("對照組") {  // 如果是對照組，hide實驗組題目
-            //     $(".guide").hide()
-            // }
+            if("對照組") {  // 如果是對照組，hide實驗組題目
+                $(".guide").hide()
+            }
         });
     
         $(".answer_btn").click(function(){
@@ -104,6 +104,24 @@
             $(this).css("backgroundColor", "#2A868C").css("color", "#fff");
             $(this).addClass("checked");
             $("input[name=1]").val($(this).html());
+        });
+
+        $('#form_answers').submit(function() {
+            var notOK = 0;
+            var question_count;
+            if("對照組") question_count = 3;
+            else question_count = 7;
+
+            for(let count = 0; count <= question_count; count++) {
+                if($("*[name=" + count + "]").val() == "") {
+                    alert("有部分題目尚未填寫完畢，請檢查一次");
+                    notOK = 1;
+                    break;
+                }
+            }
+            if(notOK == 1) return false;
+            else if (!confirm("確認繳交？")) return false;
+            else return true;
         });
     </script>
 </body>
