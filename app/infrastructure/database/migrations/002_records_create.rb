@@ -9,6 +9,7 @@ Sequel.migration do
       foreign_key :owner_id, :users
       
       Integer :access_time
+      Float   :fill_time
 
       DateTime :created_at
       DateTime :updated_at

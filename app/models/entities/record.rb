@@ -12,8 +12,9 @@ module MentalHealth
       include Dry.Types
 
       attribute :id,          Integer.optional
-      attribute :owner,        User
+      attribute :owner,       User
       attribute :access_time, Strict::Integer
+      attribute :fill_time,   Strict::Float
 
       def to_attr_hash
         to_hash.reject { |key, _| %i[id owner].include? key }
