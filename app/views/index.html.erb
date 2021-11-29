@@ -1,17 +1,24 @@
 <body class="home_body">
     <div class="container-fluid">
-        <div class="font text-center" style="font-size: 35px; line-height: 41px;">BEing</div>
-        <div class="col-12" style="margin-top: 80px; height: 48px; width: 105%; background-color: white;">
+        <div class="font text-center" style="margin-top: 15%;">
+            <img src="/being_logo.png" width="100%">
+        </div>
+        <div class="col-12" style="margin-top: 24%; height: 48px; width: 105%; background-color: white;">
             <h2 class="font" style="line-height: 48px;">填寫我的每日小記</h2>
         </div>
         <div class="col-12" style="display: block;" align="center">
-            <a href='/meditation/<%= account %>'>
-                <input class="start_btn" type="button" value="開始" action="/meditation" method='POST'>
-            </a>
+            <% if is_record %>
+                <input class="start_btn" type="button" disabled="disabled" style="background-color: #1d4649;" value="已填">
+            <% else %>
+                <a href='/meditation/<%= account %>'>
+                    <input class="start_btn" type="button" value="開始" action="/meditation" method='POST'>
+                </a>
+            <% end %>
+            
         </div>
         <div class="col-12 font bottom_card" style="height: 304px;">
-            <p style="font-size: 24px; line-height: 28px; letter-spacing: -0.02em; display: inline; float:left;">我的祝福 & 紀錄 </p>
-            <a href='/history-test/<%= account %>'>
+            <p style="font-size: 24px; line-height: 28px; letter-spacing: -0.02em; display: inline; float:left;">我的<b class="guide">祝福 & </b>紀錄 </p>
+            <a href='/all_records/<%= account %>'>
                 <p style="float:right; display: inline; color: grey; font-size: 13px; line-height: 15px; margin-top: 5px;">所有紀錄 <img src="/further_info_right_arrow.png" width="14px"></p> 
             </a>
             <div class="records no_record" align="center">
@@ -20,9 +27,65 @@
         </div>
     </div>
     <script>
-        //$(".start_btn").click(function() {
-            // add condition of group a or b
-            //window.location.replace("/meditation");
-        //});
+        $(document).ready(function() {
+            if(<%= records.length != 0 %>) {  // 如果有資料就顯示下面的小卡
+                var card_data = new Array();
+                if(<%= !user.is_guided %>) {
+                    card_data = <%= records.map { |r| [r.id, r.created_at.strftime("%m / %d (%a)"), r.owned_answers.map {|a| a.answer_content if a.question_num == 1}.join]} %>;
+                } else {
+                    card_data = <%= records.map { |r| [r.id, r.created_at.strftime("%m / %d (%a)"), r.owned_answers.map {|a| a.answer_content if a.question_num == 1}.join, r.owned_answers.map {|a| a.answer_content if a.question_num == 7}.join]} %>;
+                }
+
+                // create cards html
+                var card_html = `<div class="swiper-container">
+                                    <div class="swiper-wrapper">`;
+                card_data.reverse().forEach(content => {
+                    if(<%= !user.is_guided %>) {
+                        card_html += `<div class="swiper-slide">
+                                            <div class="slide_card">
+                                                <div class="card_title">
+                                                    <p class="card_header font">${content[1]}</p>
+                                                </div>
+                                                <div class="card_body">
+                                                    <b class="card_content_title">使用時間</b><br>
+                                                    <p class="card_content font">${content[2]}</p>
+                                                    <a href="/form_record/${content[0]}/<%= account %>"><h2 class="card_btn font">查看更多 <i class="fas fa-arrow-circle-right"></i></h2></a>
+                                                </div>
+                                            </div>
+                                        </div>`;
+                    } else {
+                        card_html += `<div class="swiper-slide">
+                                            <div class="slide_card">
+                                                <div class="card_title">
+                                                    <p class="card_header font">${content[1]}</p>
+                                                </div>
+                                                <div class="card_body">
+                                                    <b class="card_content_title">使用時間</b><br>
+                                                    <p class="card_content font">${content[2]}</p>
+                                                    <b class="card_content_title">我的祝福</b><br>
+                                                    <p class="card_content font">${content[3]}</p>
+                                                    <a href="/form_record/${content[0]}/<%= account %>"><h2 class="card_btn font">查看更多 <i class="fas fa-arrow-circle-right"></i></h2></a>
+                                                </div>
+                                            </div>
+                                        </div>`;
+                    }
+                });
+                card_html += "</div></div>";
+
+                // replace no_record area
+                $(".no_record").remove();
+                $(".bottom_card").append(card_html);
+
+                // 初始化 swiper
+                var mySwiper = new Swiper('.swiper-container', {
+                    slidesPerView: "auto",
+                    spaceBetween: 12
+                }); 
+            }
+
+            if(<%= !user.is_guided %>) {  // 如果是對照組修改某些資訊
+                $(".guide").hide();
+            }
+        });
     </script>
 </body>
