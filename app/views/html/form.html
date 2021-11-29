@@ -96,6 +96,7 @@
                     </div>
                 </div>
 
+                <input class="fill_time" name="fill_time" type="hidden" value="">
                 <input class="btn_click" style="position:relative;" type="submit" value="送出">
         
             </form>
@@ -108,6 +109,16 @@
                     $(".guide").hide()
                 }
             });
+
+            // get the start time (計算填寫時間)
+            var time_start = new Date();  
+            var clock_start = time_start.getTime();  
+
+            // 計算填寫時間
+            function get_time_spent (){   
+                var time_now = new Date();  
+                return((time_now.getTime() - clock_start)/1000);   
+            }  
         
             $(".answer_btn").click(function(){
                 $(".checked").css("backgroundColor", "#fff").css("color", "#2A868C");
@@ -130,6 +141,10 @@
                         break;
                     }
                 }
+
+                // 加入表單填寫時間
+                $(".fill_time").val(get_time_spent());
+
                 if(notOK == 1) return false;
                 else if (!confirm("確認繳交？")) return false;
                 else return true;
