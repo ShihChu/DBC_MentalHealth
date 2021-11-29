@@ -85,7 +85,7 @@ module MentalHealth
           routing.post do
             user = session[:watching]
             if user != nil
-              record = Database::RecordOrm.create(access_time: 0, owner_id: session[:watching].id)
+              record = Database::RecordOrm.create(access_time: 0, owner_id: session[:watching].id, fill_time: routing.params["fill_time"])
               num = user.is_guided ? 7 : 3 #題數
               (1..num).each { |i| Database::AnswerOrm.create(recordbook_id: record.id, question_num: i, answer_content: routing.params["#{i}"])}
             end
