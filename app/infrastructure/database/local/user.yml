@@ -1,4 +1,65 @@
 ---
+- account: 江曉嵐
+  url: xkUg73R46BGGr4MMFVZ9tfwZYTKwL1Y8IsbE53Cocv4=
+  is_guided: true
+- account: 林媛靖
+  url: vFbEkkLjdn9pcTPBTKPFQp72xaqxLZ0rdr4VrJ8iA3g=
+  is_guided: true
+- account: 劉力揚
+  url: 7dJSBYFy8K1qL8C1DzbohjgCobI1ZXAsqIHvOk0Ij4c=
+  is_guided: true
+- account: 林承謙
+  url: dyCDWD5+LevBH8R92hGgnMb1AMALoOQXNuKTDnekwcs=
+  is_guided: true
+- account: 吳珮瑜
+  url: wYBxmleIy9fp4LWcS35YJGkhMgtYF1OrZ72pVwo6Vjo=
+  is_guided: true
+- account: 賴彥江
+  url: NCg9Fo2Xyc7Vc35EOJfqqkVpgRTkVFAllXtssx2lS9A=
+  is_guided: true
+- account: 邱茹筠
+  url: KEyOaS4srM0iFjzr6WCMWHfuNbvNwLp+qdgB5rI3fkk=
+  is_guided: true
+- account: 葉念君
+  url: iR2v+0NuKbM7mw9NGabmCgYno5IXz4ngWclvzJTPxU8=
+  is_guided: true
+- account: 呂紹靖
+  url: fC82Bf82YMwgke1N6DiRSMmF2ksohKWqjb1fzUbypn4=
+  is_guided: true
+- account: 黃興煜
+  url: AHLWqykHSS4JZSUrsdxiWU5RlRSLe3r4Md6M+bRAGUw=
+  is_guided: true
+- account: 鄭嘉妤
+  url: 6Obt8qKvozOxkgzvcKq+MNp47uHXpW2PZFlnOOdX0so=
+  is_guided: false
+- account: 許瀞元
+  url: Jt4yIjcwDLwOubQCHlFBcqkX9EYUsb3bKmZkTcOFpbE=
+  is_guided: false
+- account: 蕭孟恩
+  url: QnEwZLXCpnp8poUC9NpgcA9g8VPBJ9i7mx0nxWfmvXc=
+  is_guided: false
+- account: 周明杰
+  url: KuhnPSgRQXLZ4pidpglasj5kvsfNBBuRmK839IH3dBo=
+  is_guided: false
+- account: 游欣融
+  url: HIBUZoBkO+meelZmlOXYBhAM4pIR1MmX0AaszK8q7HU=
+  is_guided: false
+- account: 馬旭慶
+  url: tvSVoJ8Vf0r+sCVFio9ZOTPQIoCsgy9zgMH3SDAnHT8=
+  is_guided: false
+- account: 張芳瑜
+  url: ti3Sg3XZF+tn6C+vPRQqNpXM2kdYKsyRqN9N10Eywqk=
+  is_guided: false
+- account: 羅堉宸
+  url: OtrKCmknuDOAj5Lmvo7hGUjlqFm7WUE+mCS3V8JSByQ=
+  is_guided: false
+- account: 賀琬茹
+  url: hd9devV8JOstJAiSnaIMueCqll4YKjo1VvxD5PDznaw=
+  is_guided: false
+- account: 林晏羽
+  url: v8KyG4cQP1+acpTn2DQWX27iSFtIy4rq9VgrOZetWPw=
+  is_guided: false
+
 - account: AAA
   url: um5kuSGwD5KFoyEg5j7bEh1MBL2im13Ae1FN1SSeSAg=
   is_guided: true
@@ -16,12 +77,6 @@
   is_guided: false
 - account: FFF
   url: ej9M74WpABnfLYVCqxnBjRAnw4GkKj2llHXv1qbe+f8=
-  is_guided: false
-- account: GGG
-  url: mH06I4ftvnHoP20++XndRUy4ORs0BbS8PC6Gk3gzC4Y=
-  is_guided: true
-- account: HHH
-  url: x8IrGlGW42fjsiheZpQrmRA4XbmYex0HkP40KK1Elgs=
   is_guided: false
 
 - account: Wendy
@@ -48,3 +103,10 @@
 - account: JessicaG
   url: riO2OyFwgb+dkP1gJ8ZODFw+L4Fn3zKdIpCRHTRv+xQ=
   is_guided: true
+- account: Juju
+  url: mH06I4ftvnHoP20++XndRUy4ORs0BbS8PC6Gk3gzC4Y=
+  is_guided: false
+- account: JujuG
+  url: x8IrGlGW42fjsiheZpQrmRA4XbmYex0HkP40KK1Elgs=
+  is_guided: true
+

@@ -13,14 +13,14 @@ module MentalHealth
         USER_FILE.map do |data|
           Database::UserOrm.create(data)
         end
-        # record
-        RECORD_FILE.map do |data|
-          Database::RecordOrm.create(data)
-        end
-        # answer
-        ANSWER_FILE.map do |data|
-          Database::AnswerOrm.create(data)
-        end
+        # # record
+        # RECORD_FILE.map do |data|
+        #   Database::RecordOrm.create(data)
+        # end
+        # # answer
+        # ANSWER_FILE.map do |data|
+        #   Database::AnswerOrm.create(data)
+        # end
       end
     end
   end
