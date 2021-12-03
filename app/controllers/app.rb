@@ -51,7 +51,7 @@ module MentalHealth
             session[:watching] = user
             records = user.owned_records
             if !records.empty?
-              freeze_time = 12*60*60 # 12小時內無法填寫
+              freeze_time = 4*60*60 # 4小時內無法填寫
               is_record = records[-1].created_at + freeze_time > Time.now() ? true : false
             end
             
