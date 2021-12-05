@@ -48,7 +48,7 @@ module MentalHealth
               routing.halt 400
             end
 
-            session[:watching] = user
+            session[:watching] = user.url
             records = user.owned_records
             if !records.empty?
               freeze_time = 4*60*60 # 4小時內無法填寫
@@ -63,7 +63,8 @@ module MentalHealth
       routing.on 'meditation' do
         routing.on String do |account|
           routing.get do
-            user = session[:watching]
+            url = session[:watching]
+            user = Database::UserOrm.where(url: url).first
             view 'meditation', engine: 'html.erb', locals: { account: user.url }
           end
         end
@@ -73,7 +74,8 @@ module MentalHealth
         routing.on String do |account|
           # GET /form/#{account}
           routing.get do
-            user = session[:watching]
+            url = session[:watching]
+            user = Database::UserOrm.where(url: url).first
             view 'form', engine: 'html.erb', locals: { account: user.url, user: user }
           end
         end
@@ -83,9 +85,10 @@ module MentalHealth
         routing.is do
           # POST /form_complete/
           routing.post do
-            user = session[:watching]
+            url = session[:watching]
+            user = Database::UserOrm.where(url: url).first
             if user != nil
-              record = Database::RecordOrm.create(access_time: 0, owner_id: session[:watching].id, fill_time: routing.params["fill_time"])
+              record = Database::RecordOrm.create(access_time: 0, owner_id: user.id, fill_time: routing.params["fill_time"])
               num = user.is_guided ? 7 : 3 #題數
               (1..num).each { |i| Database::AnswerOrm.create(recordbook_id: record.id, question_num: i, answer_content: routing.params["#{i}"])}
             end
@@ -95,7 +98,9 @@ module MentalHealth
         routing.on String do |account|
           # GET /form_complete/#{account}
           routing.get do
-            view 'form_complete', engine: 'html.erb', locals: { account: session[:watching].url }
+            url = session[:watching]
+            user = Database::UserOrm.where(url: url).first
+            view 'form_complete', engine: 'html.erb', locals: { account: user.url }
           end
         end
       end
@@ -104,7 +109,8 @@ module MentalHealth
         routing.on String do |account|
           # GET /all_records/#{account}
           routing.get do
-            user = session[:watching]
+            url = session[:watching]
+            user = Database::UserOrm.where(url: url).first
             records = user.owned_records
             view 'all_records', engine: 'html.erb', locals: { user: user, records: records, account: user.url }
           end
@@ -115,7 +121,9 @@ module MentalHealth
         routing.on String do |record|
           # GET /form_record/#{record}
           routing.get do
-            user = session[:watching]
+            url = session[:watching]
+            user = Database::UserOrm.where(url: url).first
+            
             record = Database::RecordOrm.where(id: record).first
             record.update(access_time: record.access_time+1)
             answers = record.owned_answers.map(&:answer_content)
